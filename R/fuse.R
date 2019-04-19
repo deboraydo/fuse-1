@@ -33,7 +33,7 @@ fuse <- function(DATA, mid, deltim, ParameterSet){
     stop("The parameter set has incorrect names, please correct and re-try.")
   }
 
-  U <- fusesma.sim(DATA,
+  results <- fusesma.sim(DATA,
                    mid,
                    deltim,
                    ParameterSet$rferr_add,
@@ -60,11 +60,13 @@ fuse <- function(DATA, mid, deltim, ParameterSet){
                    ParameterSet$tishape,
                    ParameterSet$qb_powr)
 
-  Q <- fuserouting.sim(U,
+  Q <- fuserouting.sim(results$U,
                        mid,
                        deltim,
                        timedelay=ParameterSet$timedelay)
 
-  return(Q)
+  results$U <- Q
+  
+  return(results)
 
 }
