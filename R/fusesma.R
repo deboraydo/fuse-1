@@ -74,7 +74,7 @@ fusesma.sim <- function(DATA, mid, deltim,
                         fracstate0 = 0.25,
                         absError = 10^(-4),   # absolute solver error (default)
                         relError = 10^(-4),   # relative solver error (default)
-                        StatesFluxes = FALSE){
+                        StatesFluxes = TRUE){
   
   # load list of availabe models
   load(system.file("data/modlist.rda", package = "fuse"))
